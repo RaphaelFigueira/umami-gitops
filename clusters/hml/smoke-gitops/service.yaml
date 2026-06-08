@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hml-smoke-gitops
+  namespace: umami-gitops-hml
+  labels:
+    app.kubernetes.io/name: hml-smoke-gitops
+    app.kubernetes.io/part-of: umami-tech
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: hml-smoke-gitops
