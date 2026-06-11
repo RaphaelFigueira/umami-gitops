@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestor-gastro-admin
+  namespace: umami-gestor-gastro-hml
+  labels:
+    app.kubernetes.io/name: gestor-gastro-admin
+    app.kubernetes.io/part-of: umami-tech
+    app.kubernetes.io/managed-by: gitops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gestor-gastro-admin
+  template:
+    metadata:
+      labels:
+        app: gestor-gastro-admin
+        app.kubernetes.io/name: gestor-gastro-admin
+    spec:
+      containers:
+        - name: admin
+          image: ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: gestor-gastro-admin-config
+            - secretRef:
+                name: gestor-gastro-admin-secrets
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

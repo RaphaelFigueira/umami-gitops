@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestor-gastro-shop
+  namespace: umami-gestor-gastro-hml
+  labels:
+    app.kubernetes.io/name: gestor-gastro-shop
+    app.kubernetes.io/part-of: umami-tech
+    app.kubernetes.io/managed-by: gitops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gestor-gastro-shop
+  template:
+    metadata:
+      labels:
+        app: gestor-gastro-shop
+        app.kubernetes.io/name: gestor-gastro-shop
+    spec:
+      containers:
+        - name: shop
+          image: ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: gestor-gastro-shop-config
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
