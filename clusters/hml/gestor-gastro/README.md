@@ -10,15 +10,19 @@ This overlay contains the first HML package for Gestor Gastrô:
 - The namespace `umami-gestor-gastro-hml` must exist.
 - The real application secret for Admin must be created outside GitOps.
 - The real `ghcr-pull-secret` must be created in `umami-gestor-gastro-hml` before sync so the private images can be pulled.
+- The ArgoCD `Application` for this overlay is versioned as `clusters/hml/gestor-gastro/application.yaml`.
 
 ## Image tag status
 
 The manifests currently reference:
 
-- `ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9`
-- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9`
+- `ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9-r1`
+- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r1`
 
-That tag is marked as pending placeholder build verification and should not be treated as a fully validated HML release until the runtime secrets and pull secret are in place.
+The `hml-d6fc8d9` tag was the ARM64 preflight build with placeholder Supabase values.
+The `hml-d6fc8d9-r1` tag is the first functional HML image set built with `STAGING_*`.
+
+The `hml-d6fc8d9-r1` tag should be treated as the functional HML release candidate once the runtime secrets and pull secret are in place.
 
 ## Routing note
 

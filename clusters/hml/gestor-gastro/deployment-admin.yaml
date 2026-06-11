@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/name: gestor-gastro-admin
     app.kubernetes.io/part-of: umami-tech
     app.kubernetes.io/managed-by: gitops
-  annotations:
-    umami.tech/image-status: pending-placeholder-build
 spec:
   replicas: 1
   selector:
@@ -24,7 +22,7 @@ spec:
         - name: ghcr-pull-secret
       containers:
         - name: admin
-          image: ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9
+          image: ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9-r1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
