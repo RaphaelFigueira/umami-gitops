@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gestor-gastro-hml
-  namespace: argocd
+  namespace: umami-argocd-hml
   labels:
     app.kubernetes.io/name: gestor-gastro
     app.kubernetes.io/part-of: umami-tech
