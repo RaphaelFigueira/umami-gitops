@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: umami-gestor-gastro-hml
+resources:
+  - namespace.yaml
+  - configmap-admin.yaml
+  - configmap-shop.yaml
+  - deployment-admin.yaml
+  - service-admin.yaml
+  - deployment-shop.yaml
+  - service-shop.yaml
+  - middleware-strip-admin-prefix.yaml
+  - ingress.yaml
