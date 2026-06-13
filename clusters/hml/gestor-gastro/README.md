@@ -18,12 +18,13 @@ This overlay contains the first HML package for Gestor Gastro:
 The manifests currently reference:
 
 - `ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9-r1`
-- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r1`
+- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r2`
 
 The `hml-d6fc8d9` tag was the ARM64 preflight build with placeholder Supabase values.
 The `hml-d6fc8d9-r1` tag is the first functional HML image set built with `STAGING_*`.
 
-The `hml-d6fc8d9-r1` tag should be treated as the functional HML release candidate once the runtime secrets and pull secret are in place.
+The `hml-d6fc8d9-r1` tag is the first functional HML Admin release candidate.
+The `hml-d6fc8d9-r2` tag is the functional Shop Modelo release candidate with the correct `VITE_ADMIN_API_URL`.
 
 ## Routing note
 

@@ -22,7 +22,7 @@ spec:
         - name: ghcr-pull-secret
       containers:
         - name: shop
-          image: ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r1
+          image: ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
