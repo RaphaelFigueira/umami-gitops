@@ -27,7 +27,9 @@ The `hml-d6fc8d9-r1` tag should be treated as the functional HML release candida
 
 ## Routing note
 
-Admin is routed through `/admin` and the ingress applies a StripPrefix middleware. The Admin health check is available at `/api/health`, which is used for probes.
+The hostname `gestor-gastro-hml.umamitech.net.br` now serves the Portal do Lojista/Admin at `/`.
+The Shop is not exposed on this hostname yet and can receive a dedicated hostname later if needed.
+The Admin health check is available at `/api/health`, which is used for probes.
 
 ## Cloudflare Access
 

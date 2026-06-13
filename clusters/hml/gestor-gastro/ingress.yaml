@@ -8,25 +8,17 @@ metadata:
     app.kubernetes.io/part-of: umami-tech
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: umami-gestor-gastro-hml-gestor-gastro-strip-admin-prefix@kubernetescrd
-    umami.tech/routing-note: admin-served-under-admin-via-strip-prefix
+    umami.tech/routing-note: hostname-root-serves-admin-no-shop-exposure
 spec:
   ingressClassName: traefik
   rules:
     - host: gestor-gastro-hml.umamitech.net.br
       http:
         paths:
-          - path: /admin
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: gestor-gastro-admin
                 port:
                   number: 3000
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: gestor-gastro-shop
-                port:
-                  number: 80

@@ -11,4 +11,4 @@ data:
   NODE_ENV: production
   NEXT_PUBLIC_SUPABASE_URL: "[PUBLIC]"
   NEXT_PUBLIC_SUPABASE_ANON_KEY: "[PUBLIC]"
-  NEXTAUTH_URL: https://gestor-gastro-hml.umamitech.net.br/admin
+  NEXTAUTH_URL: https://gestor-gastro-hml.umamitech.net.br

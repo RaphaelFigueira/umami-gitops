@@ -9,5 +9,4 @@ resources:
   - service-admin.yaml
   - deployment-shop.yaml
   - service-shop.yaml
-  - middleware-strip-admin-prefix.yaml
   - ingress.yaml
