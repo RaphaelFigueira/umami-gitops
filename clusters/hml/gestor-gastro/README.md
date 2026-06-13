@@ -18,18 +18,28 @@ This overlay contains the first HML package for Gestor Gastro:
 The manifests currently reference:
 
 - `ghcr.io/umamii-tech/gestor-gastro-admin:hml-d6fc8d9-r1`
-- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r1`
+- `ghcr.io/umamii-tech/gestor-gastro-shop:hml-d6fc8d9-r2`
 
 The `hml-d6fc8d9` tag was the ARM64 preflight build with placeholder Supabase values.
 The `hml-d6fc8d9-r1` tag is the first functional HML image set built with `STAGING_*`.
 
-The `hml-d6fc8d9-r1` tag should be treated as the functional HML release candidate once the runtime secrets and pull secret are in place.
+The `hml-d6fc8d9-r1` tag is the first functional HML Admin release candidate.
+The `hml-d6fc8d9-r2` tag is the functional Shop Modelo release candidate with the correct `VITE_ADMIN_API_URL`.
 
 ## Routing note
 
 The hostname `gestor-gastro-hml.umamitech.net.br` now serves the Portal do Lojista/Admin at `/`.
 The Shop is not exposed on this hostname yet and can receive a dedicated hostname later if needed.
 The Admin health check is available at `/api/health`, which is used for probes.
+
+## Shop Modelo Hostname
+
+The Shop Modelo is exposed separately at `shop-modelo-gestor-gastro-hml.umamitech.net.br`.
+The tenant slug must match the hostname prefix: `shop-modelo-gestor-gastro-hml`.
+On that hostname, `/api` proxies to the Admin service and `/` serves the Shop.
+Cloudflare Access must protect the hostname before public exposure.
+
+The Shop deployment remains on the last confirmed functional tag until the `hml-d6fc8d9-r2` image is verified and published; do not assume the newer tag exists without confirmation.
 
 ## Cloudflare Access
 

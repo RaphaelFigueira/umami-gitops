@@ -10,3 +10,4 @@ resources:
   - deployment-shop.yaml
   - service-shop.yaml
   - ingress.yaml
+  - ingress-shop-modelo.yaml
