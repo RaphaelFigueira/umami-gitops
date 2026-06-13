@@ -31,6 +31,15 @@ The hostname `gestor-gastro-hml.umamitech.net.br` now serves the Portal do Lojis
 The Shop is not exposed on this hostname yet and can receive a dedicated hostname later if needed.
 The Admin health check is available at `/api/health`, which is used for probes.
 
+## Shop Modelo Hostname
+
+The Shop Modelo is exposed separately at `shop-modelo-gestor-gastro-hml.umamitech.net.br`.
+The tenant slug must match the hostname prefix: `shop-modelo-gestor-gastro-hml`.
+On that hostname, `/api` proxies to the Admin service and `/` serves the Shop.
+Cloudflare Access must protect the hostname before public exposure.
+
+The Shop deployment remains on the last confirmed functional tag until the `hml-d6fc8d9-r2` image is verified and published; do not assume the newer tag exists without confirmation.
+
 ## Cloudflare Access
 
 Cloudflare Access must protect `gestor-gastro-hml.umamitech.net.br` before the hostname is exposed publicly.
